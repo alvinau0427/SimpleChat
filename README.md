@@ -5,6 +5,7 @@
 ## Features
 - Built with Node.js, and Socket.io
 - Online users count
+- Cookie local storage for recent message
 
 ## Installing
 ```bash
