@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SimpleChat</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io();
+	</script>
+</head>
+
+<body>
+	<div id="container">
+		<div id="status-box">
+			Server: <span id="status">-</span> / <span id="online">0</span> online.
+		</div>
+		<div id="content"></div>
+		<br />
+		<div id="send-box">
+			<form id="send-form">
+				<input type="text" name="name" id="name" placeholder="Nickname" />
+				<input type="text" name="msg" id="msg" placeholder="Enter your Message ..." />
+				<input type="submit" value="Send" />
+			</form>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			var status = document.getElementById("status");
+			var online = document.getElementById("online");
+			var sendForm = document.getElementById("send-form");
+			var content = document.getElementById("content");
+
+			// When the connection event is triggered
+			socket.on("connect", function () {
+				status.innerText = "Connected.";
+			});
+
+			// When an offline event is triggered
+			socket.on("disconnect", function () {
+				status.innerText = "Disconnected.";
+			});
+
+			// When the server returns the number of online events
+			socket.on("online", function (amount) {
+				online.innerText = amount;
+			});
+
+			// Handling messaging events
+			socket.on("msg", function (d) {
+				var msgBox = document.createElement("div")
+				msgBox.className = "msg";
+				var nameBox = document.createElement("span");
+				nameBox.className = "name";
+				var name = document.createTextNode(d.name);
+				var msg = document.createTextNode(d.msg);
+
+				nameBox.appendChild(name);
+				msgBox.appendChild(nameBox);
+				msgBox.appendChild(msg);
+				content.appendChild(msgBox);
+			});
+
+			// Handling send button
+			sendForm.addEventListener("submit", function (e) {
+				e.preventDefault();
+
+				var msgChecker = true;
+				var formData = {};
+				var formChild = sendForm.children;
+
+				for (var i = 0; i < sendForm.childElementCount; i++) {
+					var child = formChild[i];
+					if (child.name !== "") {
+						var val = child.value;
+						// If the value is empty or does not exist
+						if (val === "" || !val) {
+							msgChecker = false;
+							child.classList.add("error");
+						} else {
+							child.classList.remove("error");
+							formData[child.name] = val;
+						}
+					}
+				}
+
+				if (msgChecker) {
+					socket.emit("send", formData);
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>
