@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const uri = 'mongodb://admin:admin@cluster0.c8zl3.mongodb.net/simple_chat?retryWrites=true&ssl=true&replicaSet=cluster0-shard-0&readPreference=secondary';
+// const uri = 'mongodb://localhost:27017/simple_chat';
+const uri = 'mongodb+srv://user:user@cluster0.c8zl3.mongodb.net/simple_chat?retryWrites=true&w=majority';
 
 mongoose.connect(
     uri,
@@ -12,5 +13,4 @@ mongoose.connect(
     }
 ); 
       
-
-// module.exports = mongoose.connection;
+module.exports = mongoose.connection;
