@@ -1,6 +1,6 @@
 {
 	"name": "SimpleChat",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Simple chatroom website develop with Node.js and Socket.io",
 	"main": "index.js",
 	"scripts": {
