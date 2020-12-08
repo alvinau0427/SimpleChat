@@ -6,6 +6,7 @@
 - Built with Node.js, and Socket.io
 - Online users count
 - Cookie local storage for recent message
+- Connecting with MongoDB for message storage
 
 ## Installing
 ```bash

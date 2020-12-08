@@ -43,27 +43,22 @@
 				nameInputBox.value = name;
 			}
 
-			// When the connection event is triggered
 			socket.on("connect", function () {
 				status.innerText = "Connected.";
 			});
 
-			// When an offline event is triggered
 			socket.on("disconnect", function () {
 				status.innerText = "Disconnected.";
 			});
 
-			// When the server returns the number of online events
 			socket.on("online", function (amount) {
 				online.innerText = amount;
 			});
 
-			// Handling the maximum record
 			socket.on("maxRecord", function (amount) {
 				max_record = amount;
 			});
 
-			// Handling original message
 			socket.on("chatRecord", function (msgs) {
 				for (var i = 0; i < msgs.length; i++) {
 					(function () {
@@ -72,10 +67,8 @@
 				}
 			});
 
-			// Handling messaging events
 			socket.on("msg", addMsgToBox);
 
-			// Handling send button
 			sendForm.addEventListener("submit", function (e) {
 				e.preventDefault();
 
@@ -89,7 +82,6 @@
 					var child = formChild[i];
 					if (child.name !== "") {
 						var val = child.value;
-						// If the value is empty or does not exist
 						if (val === "" || !val) {
 							ok = false;
 							child.classList.add("error");
@@ -106,7 +98,6 @@
 				}
 			});
 
-			// Add recent message to the message box
 			function addMsgToBox(d) {
 				var msgBox = document.createElement("div")
 				msgBox.className = "msg";
@@ -124,8 +115,7 @@
 					rmMsgFromBox();
 				}
 			}
-
-			// Remove redundant messages
+			
 			function rmMsgFromBox() {
 				var childs = content.children;
 				childs[0].remove();
