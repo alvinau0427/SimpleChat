@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 // const uri = 'mongodb://localhost:27017/simple_chat';
-const uri = 'mongodb+srv://alvinau0427:78v7QCMbsdlX0Fnr@cluster0.c8zl3.mongodb.net/simple_chat?retryWrites=true&w=majority';
+// const uri = 'mongodb+srv://alvinau0427:78v7QCMbsdlX0Fnr@cluster0.c8zl3.mongodb.net/simple_chat?retryWrites=true&w=majority';
+const uri = process.env.MONGODB_URI;
 
 mongoose.connect(
     uri,
