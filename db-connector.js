@@ -5,7 +5,7 @@ const uri = 'mongodb+srv://user:FrY9QK70NWV2cjmW@cluster0.c8zl3.mongodb.net/simp
 
 mongoose.connect(
     uri,
-    { useNewUrlParser: true },
+    { useNewUrlParser: true, useUnifiedTopology: true },
     function (err) {
         if (err) {
             console.log("System message: mongoose connection failed");
