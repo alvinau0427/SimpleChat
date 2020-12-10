@@ -16,12 +16,16 @@ class Records extends EventEmitter {
         const m = new Message(msg);
         m.save();
         this.emit('new_message', msg);
-        if (data.length > MAX) {
-            data.splice(0, 1);
-        }
+        Message.count().then((count) => {
+            if (count >= MAX) {
+                Message.find().sort({ 'time': 1 }).limit(1).then((res) => {
+                    Message.findByIdAndRemove(res[0]._id);
+                });
+            }
+        });
     }
 
-    get (callback) {
+    get(callback) {
         Message.find((err, msgs) => {
             callback(msgs);
         });
