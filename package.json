@@ -4,12 +4,14 @@
 	"description": "Simple chatroom website develop with Node.js and Socket.io",
 	"main": "index.js",
 	"scripts": {
-		"start": "index.js",
 		"server": "node db-connector.js",
 		"dev": "node index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": [],
+	"keywords": [
+		"example",
+		"heroku"
+	],
 	"author": "alvinau0427",
 	"license": "MIT",
 	"dependencies": {
@@ -18,5 +20,8 @@
 		"mongoose": "^5.11.5",
 		"nodemon": "^2.0.6",
 		"socket.io": "^3.0.3"
+	},
+	"engines": {
+		"node": "12.19.0"
 	}
 }
