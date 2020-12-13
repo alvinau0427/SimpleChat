@@ -4,7 +4,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const path = require('path');
 const records = require('./records.js');
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3000;
 
 let onlineCount = 0;
 
@@ -43,5 +43,5 @@ records.on('new_message', (msg) => {
 });
 
 server.listen(80, () => {
-	console.log('System Message: server started on http://localhost:3003');
+	console.log('System Message: server started on http://localhost:3000');
 });
