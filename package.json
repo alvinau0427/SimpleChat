@@ -1,24 +1,26 @@
 {
-	"name": "simplechat-service",
-	"version": "1.2.0",
-	"description": "Simple chatroom website develop with Node.js and Socket.io",
-	"main": "index.js",
-	"scripts": {
-		"start": "node index.js",
-		"server": "node db-connector.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [
-		"example",
-		"heroku"
-	],
-	"author": "alvinau0427",
-	"license": "MIT",
-	"dependencies": {
-		"express": "^4.17.1",
-		"mongodb": "^3.6.3",
-		"mongoose": "^5.11.7",
-		"nodemon": "^2.0.6",
-		"socket.io": "^3.0.4"
-	}
+  "name": "SimpleChat",
+  "version": "1.0.0",
+  "description": "Simple chatroom website develop with Node.js and Socket.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvinau0427/SimpleChat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alvinau0427/SimpleChat/issues"
+  },
+  "homepage": "https://github.com/alvinau0427/SimpleChat#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.7",
+    "socket.io": "^3.0.4"
+  }
 }
