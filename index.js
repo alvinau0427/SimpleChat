@@ -39,6 +39,6 @@ records.on('new_message', (msg) => {
 	io.emit('msg', msg);
 });
 
-server.listen(80, () => {
+server.listen(port, () => {
 	console.log('System Message: server started on http://localhost:3000');
 });
