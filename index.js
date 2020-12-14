@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 let onlineCount = 0;
 
-app.use(express.static(path.join(__dirname, 'views')))
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/views/index.html');
